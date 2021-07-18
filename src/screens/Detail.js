@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {WebView} from 'react-native-webview';
+import Button from '../components/Button';
 
 const Detail = ({route}) => {
   return (
@@ -21,6 +22,10 @@ const Detail = ({route}) => {
           html: `<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body>${route.params.contents}</body></html>`,
         }}
       />
+      <View style={styles.buttonContainer}>
+        <Button title="Submit" icon="share" onPress={() => {}} />
+        <Button title="Favorite Job" icon="heart" onPress={() => {}} />
+      </View>
     </View>
   );
 };
@@ -58,5 +63,9 @@ const styles = StyleSheet.create({
     padding: 5,
     fontWeight: 'bold',
     color: '#34444c',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    padding: 10,
   },
 });
