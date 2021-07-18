@@ -1,9 +1,18 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useCallback} from 'react';
+import {StyleSheet, Text, View, Linking, Alert} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Button from '../components/Button';
 
 const Detail = ({route}) => {
+  const handlePressToURL = useCallback(async () => {
+    const supported = await Linking.canOpenURL(route.params.jobSite);
+    if (supported) {
+      await Linking.openURL(route.params.jobSite);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${route.params.jobSite}`);
+    }
+  }, [route.params.jobSite]);
+
   return (
     <View style={styles.container}>
       <Text style={styles.name}> {route.params.name}</Text>
@@ -23,7 +32,7 @@ const Detail = ({route}) => {
         }}
       />
       <View style={styles.buttonContainer}>
-        <Button title="Submit" icon="share" onPress={() => {}} />
+        <Button title="Submit" icon="share" onPress={handlePressToURL} />
         <Button title="Favorite Job" icon="heart" onPress={() => {}} />
       </View>
     </View>

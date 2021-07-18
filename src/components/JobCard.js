@@ -11,6 +11,7 @@ const JobCard = ({job, navigation}) => {
           contents: job.contents,
           level: job.levels[0].name,
           location: job.locations[0].name,
+          jobSite: job.refs.landing_page,
         })
       }>
       <Text style={styles.name}>{job.name}</Text>
