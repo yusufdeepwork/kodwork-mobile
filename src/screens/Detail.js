@@ -47,20 +47,6 @@ const styles = StyleSheet.create({
     color: '#34444c',
     padding: 5,
   },
-  inline_container: {
-    flexDirection: 'row',
-    margin: 5,
-  },
-  title: {
-    color: '#ef5350',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  desc: {
-    fontWeight: 'bold',
-    fontSize: 16,
-    marginLeft: 3,
-  },
   detailsTitle: {
     fontSize: 25,
     textAlign: 'center',
