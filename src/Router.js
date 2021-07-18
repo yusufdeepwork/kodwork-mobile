@@ -18,7 +18,14 @@ const Stack = createStackNavigator();
 const Router = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: '#ef5350',
+            fontWeight: 'bold',
+          },
+        }}>
         <Stack.Screen name="Jobs" component={Jobs} />
       </Stack.Navigator>
     </NavigationContainer>
