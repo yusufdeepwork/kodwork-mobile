@@ -13,6 +13,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import Jobs from './screens/Jobs';
+import Detail from './screens/Detail';
 const Stack = createStackNavigator();
 
 const Router = () => {
@@ -27,6 +28,11 @@ const Router = () => {
           },
         }}>
         <Stack.Screen name="Jobs" component={Jobs} />
+        <Stack.Screen
+          name="Detail"
+          options={({route}) => ({title: route.params.name})}
+          component={Detail}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

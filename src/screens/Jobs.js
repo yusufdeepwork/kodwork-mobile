@@ -3,7 +3,7 @@ import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import axios from 'axios';
 import JobCard from '../components/JobCard';
 
-export default function Jobs() {
+export default function Jobs({navigation}) {
   const [jobList, setjobList] = useState();
   const jobsUrl = 'https://www.themuse.com/api/public/jobs?page=1';
 
@@ -21,14 +21,17 @@ export default function Jobs() {
     fetchJobs();
   }, []);
 
+  const renderJob = ({item}) => <JobCard job={item} navigation={navigation} />;
+
   return (
     <View style={styles.container}>
       {isLoading ? (
         <ActivityIndicator color={'#ef5350'} size={'large'} />
       ) : (
         <FlatList
+          keyExtractor={(item, index) => index}
           data={jobList}
-          renderItem={({item}) => <JobCard job={item} />}
+          renderItem={renderJob}
         />
       )}
     </View>

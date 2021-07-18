@@ -1,9 +1,18 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const JobCard = ({job}) => {
+const JobCard = ({job, navigation}) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={() => {}}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate('Detail', {
+          name: job.name,
+          contents: job.contents,
+          level: job.levels[0].name,
+          location: job.locations[0].name,
+        })
+      }>
       <Text style={styles.name}>{job.name}</Text>
       <Text style={styles.sprinklr}>Sprinklr</Text>
       <Text allowFontScaling={false} style={styles.location}>
