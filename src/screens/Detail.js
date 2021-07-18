@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {StyleSheet, Text, View, Linking, Alert} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Button from '../components/Button';
+import Title from '../components/Title';
 
 const Detail = ({route}) => {
   const handlePressToURL = useCallback(async () => {
@@ -16,14 +17,8 @@ const Detail = ({route}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.name}> {route.params.name}</Text>
-      <View style={styles.inline_container}>
-        <Text style={styles.title}>Locations:</Text>
-        <Text style={styles.desc}>{route.params.location}</Text>
-      </View>
-      <View style={styles.inline_container}>
-        <Text style={styles.title}>Job Level:</Text>
-        <Text style={styles.desc}>{route.params.level}</Text>
-      </View>
+      <Title titleName="Locations" titleDesc={route.params.location} />
+      <Title titleName="Job Level" titleDesc={route.params.level} />
       <Text style={styles.detailsTitle}>Job Detail</Text>
       <WebView
         originWhitelist={['*']}
