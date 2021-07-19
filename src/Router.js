@@ -44,7 +44,11 @@ const Router = () => {
   return (
     <FavoritesJobProvider>
       <NavigationContainer>
-        <Drawer.Navigator>
+        <Drawer.Navigator
+          drawerContentOptions={{
+            activeTintColor: '#e91e63',
+            labelStyle: {fontSize: 15},
+          }}>
           <Drawer.Screen name="Jobs" component={JobStack} />
           <Drawer.Screen name="Favorites" component={Favorites} />
         </Drawer.Navigator>
