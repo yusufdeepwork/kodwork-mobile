@@ -5,15 +5,7 @@ const JobCard = ({job, navigation}) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() =>
-        navigation.navigate('Detail', {
-          name: job.name,
-          contents: job.contents,
-          level: job.levels[0].name,
-          location: job.locations[0].name,
-          jobSite: job.refs.landing_page,
-        })
-      }>
+      onPress={() => navigation.navigate('Detail', {job})}>
       <Text style={styles.name}>{job.name}</Text>
       <Text style={styles.sprinklr}>Sprinklr</Text>
       <Text allowFontScaling={false} style={styles.location}>

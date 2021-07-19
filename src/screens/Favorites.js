@@ -1,12 +1,16 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import JobCard from '../components/JobCard';
 
-const Favorites = () => {
-  const renderFavorites = () => <JobCard job={null} navigation={null} />;
+const Favorites = ({navigation}) => {
+  const jobList = useSelector(s => s.favoriteJobList);
+  const renderFavorites = ({item}) => (
+    <JobCard job={item} navigation={navigation} />
+  );
   return (
     <View>
-      <FlatList data={[]} renderItem={renderFavorites} />
+      {jobList && <FlatList data={jobList} renderItem={renderFavorites} />}
     </View>
   );
 };

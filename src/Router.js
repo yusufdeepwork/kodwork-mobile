@@ -8,9 +8,7 @@
 
 import React from 'react';
 import 'react-native-gesture-handler';
-import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
@@ -19,6 +17,8 @@ import Detail from './screens/Detail';
 import Favorites from './screens/Favorites';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+import FavoritesJobProvider from './context/Provider';
 
 const JobStack = () => {
   return (
@@ -33,7 +33,7 @@ const JobStack = () => {
       <Stack.Screen name="Jobs" component={Jobs} />
       <Stack.Screen
         name="Detail"
-        options={({route}) => ({title: route.params.name})}
+        options={({route}) => ({title: route.params.job.name})}
         component={Detail}
       />
     </Stack.Navigator>
@@ -42,12 +42,14 @@ const JobStack = () => {
 
 const Router = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Jobs" component={JobStack} />
-        <Drawer.Screen name="Favorites" component={Favorites} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <FavoritesJobProvider>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Jobs" component={JobStack} />
+          <Drawer.Screen name="Favorites" component={Favorites} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </FavoritesJobProvider>
   );
 };
 
