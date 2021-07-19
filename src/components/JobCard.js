@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import Button from './Button';
 
-const JobCard = ({job, navigation}) => {
+const JobCard = ({job, navigation, isFavorite, onPress}) => {
   return (
     <TouchableOpacity
       style={styles.container}
@@ -12,6 +13,7 @@ const JobCard = ({job, navigation}) => {
         {job.locations.map(loc => loc.name)}
       </Text>
       <Text style={styles.level}> {job.levels[0].name} </Text>
+      {isFavorite && <Button title="Remove" onPress={onPress} />}
     </TouchableOpacity>
   );
 };

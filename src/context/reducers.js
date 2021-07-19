@@ -9,6 +9,13 @@ const reducer = (state, action) => {
         ...state,
         favoriteJobList: newFavoritesList,
       };
+    case 'REMOVE_FAVORITE':
+      return {
+        ...state,
+        favoriteJobList: state.favoriteJobList.filter(
+          job => job.id !== action.payload.id,
+        ),
+      };
     default:
       return state;
   }
