@@ -16,6 +16,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import Jobs from './screens/Jobs';
 import Detail from './screens/Detail';
+import Favorites from './screens/Favorites';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -44,6 +45,7 @@ const Router = () => {
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name="Jobs" component={JobStack} />
+        <Drawer.Screen name="Favorites" component={Favorites} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
